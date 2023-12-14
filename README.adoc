@@ -1,0 +1,32 @@
+:toc: left
+:toc-title: 目录
+:icons: font
+
+ifndef::toclevels[]
+:toclevels: 4
+endif::[]
+
+:imagesdir: Images
+
+
+= 开发环境
+
+[IMPORTANT]
+====
+* 相关软件通过 winget 工具安装，需要 Windows 10 版本 1809（10.0.17763）或更高版本的 Windows 10、Windows 11。
+* https://docs.microsoft.com/zh-cn/windows/package-manager/winget/[winget概述及指令说明]。
+====
+
+:leveloffset: +1
+
+include::{docdir}/Base/Windows.adoc[]
+
+include::{docdir}/Base/Terminal.adoc[]
+
+include::{docdir}/Base/Git.adoc[]
+
+include::{docdir}/Base/Code.adoc[]
+
+include::{docdir}/Language/Python.adoc[]
+
+:leveloffset: -1

@@ -1,0 +1,127 @@
+:icons: font
+
+
+= Anaconda
+
+== 安装 Anaconda
+
+1、打开 Windows Terminal 。:: 
+
+2、搜索 Anaconda3 。:: 
+
+[source, PowerShell]
+----
+winget search Anaconda3
+----
+
+.返回结果
+----
+名称       ID                 版本    源
+--------------------------------------------
+Anaconda3 Anaconda.Anaconda3 XXXX.XX winget
+----
+
+3、安装 Anaconda 。:: 
+
+[source, PowerShell]
+----
+winget install --name Anaconda3
+----
+
+[NOTE]
+由于搜索 Anaconda3 返回结果只有一个，安装时可用以上的简化方式。
+
+== 配置 Anaconda 终端
+
+1、Windows Terminal 下拉菜单选择“设置”，打开设置窗格。:: 
+
+2、 添加配置文件。::
+
+* 左边菜单栏点击添加新配置文件；
+* 右边配置项点击新建空配置文件；
+* 名称改为 Anaconda ；
+* 命令行用 C:\Program Files\PowerShell\7\pwsh.exe -ExecutionPolicy ByPass -NoExit -Command "& '%USERPROFILE%\anaconda3\shell\condabin\conda-hook.ps1' ; conda activate '%USERPROFILE%\anaconda3'" 替换；
+* 启动目录撤销使用父进程目录；
+* 图标用 %USERPROFILE%\anaconda3\Menu\anaconda-navigator.ico 替换；
+* 点击保存，保存配置文件。
+
+4、 下拉菜单选择 Anaconda ，验证新的 Anaconda 配置。::
+
+[source, Anaconda]
+----
+# 输入指令查看 Anaconda 版本
+conda --version
+
+# 返回值
+conda X.X.X
+
+# 输入指令查看 Python 版本
+python --version
+
+# 返回值
+Python X.X.X
+----
+
+[NOTE]
+Anaconda 有图形化操作界面；不过终端指令更加简捷、高效，所有 Anaconda 操作都建议用终端执行。
+
+== 配置 Anaconda 使用清华源
+
+1、确认 Windows Terminal 当前打开 Anaconda 窗格。:: 
+
+2、创建 .condarc 文件。:: 
+
+[source, Anaconda]
+----
+conda config --set show_channel_urls yes
+----
+
+[NOTE]
+Anaconda 的安装目录及上述指令生成的 .condarc 资源配置文件均位于 Anaconda 终端的启动目录（通常为 C:\Users\XXX）下。
+
+3、用记事本打开 .condarc 文件。:: 
+
+4、以下列内容替换文档里的内容。:: 
+
+----
+channels:
+  - defaults
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  deepmodeling: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
+show_channel_urls: true
+channel_priority: strict
+----
+
+5、验证修改的配置。:: 
+
+[source, Anaconda]
+----
+conda config --show
+----
+
+检查返回的 default_channels 及 custon_channels 配置项的内容是否如上。
+
+6、更新Anaconda版本。:: 
+
+[source, Anaconda]
+----
+conda update conda
+----
+
+[NOTE]
+====
+* Anaconda 中 Python 包较多，更新会持续一段时间。
+* 更新完成后可检查新的 Anaconda 及 Python 版本。
+* 不同 Python 项目宜分别创建专用 Anaconda 环境，以解决特定 Python 包的依赖问题。
+====

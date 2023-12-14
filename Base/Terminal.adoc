@@ -1,0 +1,33 @@
+:icons: font
+
+
+= 终端
+
+== PowerShell
+
+1、打开 Windows Terminal 。:: 
+
+2、搜索 PowerShell 。:: 
+
+[source, Windows PowerShell]
+----
+winget search Microsoft.PowerShell
+----
+
+.返回结果
+----
+名称                ID                           版本     源
+----------------------------------------------------------------
+PowerShell         Microsoft.PowerShell         X.X.X.XX winget
+Powershell Preview Microsoft.PowerShell.Preview X.X.X.XX winget
+----
+
+3、安装 PowerShell 。:: 
+
+[source, Windows PowerShell]
+----
+winget install --id Microsoft.PowerShell -e
+----
+
+[NOTE]
+PowerShell 功能强于 Windows PowerShell ，建议配置 PowerShell 作为默认配置文件。

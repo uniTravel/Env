@@ -1,0 +1,23 @@
+:icons: font
+
+
+= VS Code
+
+1、下载 VS Code 安装包。:: 
+
+https://code.visualstudio.com/docs/?dv=win[VS Code 安装包]
+
+[NOTE]
+新版本发布时，下载可能会很慢。可以下载前一版本，然后更新。
+
+2、安装 VS Code 。::
+
+找到下载的 VS Code 安装包，安装 VS Code。
+
+2、安装扩展。:: 
+
+--
+[horizontal]
+AsciiDoc:: 编辑 AsciiDoc 文档。
+Draw.io Integration:: 绘制流程图。
+--

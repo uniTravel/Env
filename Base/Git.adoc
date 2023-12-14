@@ -1,0 +1,27 @@
+:icons: font
+
+
+= Git
+
+1、打开 Windows Terminal 。:: 
+
+2、搜索 Git 。:: 
+
+[source, PowerShell]
+----
+winget search Git.Git
+----
+
+.返回结果
+----
+名称 ID      版本     源
+-----------------------------
+Git  Git.Git X.XX.X.X winget
+----
+
+3、安装 Git 。:: 
+
+[source, PowerShell]
+----
+winget install --id Git.Git -e
+----

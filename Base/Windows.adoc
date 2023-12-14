@@ -1,0 +1,31 @@
+:icons: font
+
+ifndef::imagesdir[]
+:imagesdir: ../Images
+endif::[]
+
+
+= Windows
+
+== 数字许可证激活
+
+1、以管理员身份运行 Windows PowerShell 。::
+
+2、下载并执行激活脚本。::
+
+[source, Windows PowerShell]
+----
+irm massgrave.dev/get | iex
+----
+
+.返回结果
+--
+image::irm.png[640,480]
+--
+
+[TIP]
+====
+* 选 HWID ，永久激活Windows。
+* 选 Extras ，可以执行家庭版升级专业版等操作。
+* 若出错，可尝试断网后重试。
+====

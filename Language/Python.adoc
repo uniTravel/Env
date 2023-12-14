@@ -1,0 +1,119 @@
+:toc: left
+:toc-title: 目录
+:icons: font
+
+ifndef::imagesdir[]
+:imagesdir: ../Images
+endif::[]
+
+
+= Python
+
+:leveloffset: +1
+
+include::{docdir}/Language/Anaconda.adoc[]
+
+:leveloffset: -1
+
+== 安装 VS Code 扩展
+
+--
+[horizontal]
+Python:: Python 语言支持。
+Jupyter:: Jupyter notebook 支持。
+autoDocstring:: 生成Python注释。
+autopep8:: 格式化Python代码。
+--
+
+[NOTE]
+====
+* Python 与 Jupyter 会自动安装依赖的扩展。 
+* autoDocstring 与 autopep8 非必选，但最好装上。
+====
+
+== 配置 VS Code
+
+[source, json]
+.打开设置窗格，转到 settings.json 格式，加入以下内容。
+----
+{
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "args": [
+                "-ExecutionPolicy",
+                "ByPass",
+                "-NoExit",
+                "-Command",
+                "& %USERPROFILE%\\shell\\condabin\\conda-hook.ps1"
+            ],
+            "icon": "terminal-powershell"
+        }
+    },
+    "asciidoc.useWorkspaceRootAsBaseDirectory": true,
+    "asciidoc.antora.enableAntoraSupport": true,
+    "redhat.telemetry.enabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "autoDocstring.docstringFormat": "sphinx-notypes",
+}
+----
+
+== Hello World 例子
+
+1、打开 Anaconda 终端。:: 
+
+2、创建 sample 环境。:: 
+
+[source, Anaconda]
+----
+conda create -c conda-forge -n sample nb_conda_kernels
+----
+
+[IMPORTANT]
+====
+* 在 Jupyter 的 NoteBook 中执行必须安装 nb_conda_kernels 包。
+* Python 包可以在创建环境时安装，也可以后续再安装。
+* "-c conda-forge" 是指从 conda-forge 频道下载包，自建环境的包管理命令最好都加上该参数。
+====
+
+3、创建一个空白的文件夹 sample 。:: 
+
+4、启动 VS Code ，打开 sample 文件夹。:: 
+
+5、选择 sample 作为 Python 解释器。:: 
+
+6、新建并在终端运行 hello.py 文件。:: 
+
+[source, Python]
+.新建文件，命名为 hello.py ，键入如下代码
+----
+print("Hello World")
+----
+
+image::python.png[]
+
+点击右上角的运行按钮。
+
+image::hello.png[]
+
+7、新建 note.ipynb 文件。:: 
+
+选择 sample 作为 Jupyter 内核。
+
+image::jupyter.png[]
+
+8、关闭 VS Code 。:: 
+
+9、删除 sample 文件夹。:: 
+
+10、删除 sample 环境。:: 
+
+[source, Anaconda]
+----
+conda remove -n sample --all
+----
